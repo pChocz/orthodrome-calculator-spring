@@ -1,25 +1,30 @@
 package chocz.pj.calculationengine;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import static chocz.pj.util.Converter.toDegrees;
 import static chocz.pj.util.Converter.toRadians;
 
+@Getter
+@Setter
 public class Orthodrome {
 
     private Point aPoint;
     private Point bPoint;
     private Case caseType;
     public double distanceAngles;
-    public double distanceNm;
+    private double distanceNm;
     public double distanceKm;
-    public double height1;
-    public double height2;
+    private double height1;
+    private double height2;
     private Point firstOrthodromeVertex;
     private Point secondOrthodromeVertex;
 
     public Orthodrome(SphericalTriangle sphericalTriangle, Point aPoint, Point bPoint, Case caseType) {
         this.setSphericalTriangle();
-        this.setaPoint(aPoint);
-        this.setbPoint(bPoint);
+        this.setAPoint(aPoint);
+        this.setBPoint(bPoint);
         this.setCaseType(caseType);
 
         this.setDistanceAngles(sphericalTriangle.d);
@@ -31,18 +36,18 @@ public class Orthodrome {
     }
 
     public Point calculateFirstOrthodromeVertex() {
-        double numerator = Math.tan(getaPoint().getPhiRadians())*Math.sin(getbPoint().getLambdaRadians()) - Math.tan(getbPoint().getPhiRadians())*Math.sin(getaPoint().getLambdaRadians());
+        double numerator = Math.tan(getAPoint().getPhiRadians())*Math.sin(getBPoint().getLambdaRadians()) - Math.tan(getBPoint().getPhiRadians())*Math.sin(getAPoint().getLambdaRadians());
 
-        double denominator = Math.tan(getaPoint().getPhiRadians())*Math.cos(getbPoint().getLambdaRadians()) - Math.tan(getbPoint().getPhiRadians())*Math.cos(getaPoint().getLambdaRadians());
+        double denominator = Math.tan(getAPoint().getPhiRadians())*Math.cos(getBPoint().getLambdaRadians()) - Math.tan(getBPoint().getPhiRadians())*Math.cos(getAPoint().getLambdaRadians());
 
         double lambdaR = toDegrees(Math.atan(numerator/denominator));
         double lambdaVertex = 90 + lambdaR;
 
         double phiVertex;
-        if (getbPoint().getPhi() == 0) {
-            phiVertex = toDegrees(Math.atan(Math.tan(getaPoint().getPhiRadians())/Math.sin(toRadians(getaPoint().getLambda() - lambdaR))));
+        if (getBPoint().getPhi() == 0) {
+            phiVertex = toDegrees(Math.atan(Math.tan(getAPoint().getPhiRadians())/Math.sin(toRadians(getAPoint().getLambda() - lambdaR))));
         } else {
-            phiVertex = toDegrees(Math.atan(Math.tan(getbPoint().getPhiRadians())/Math.sin(toRadians(getbPoint().getLambda() - lambdaR))));
+            phiVertex = toDegrees(Math.atan(Math.tan(getBPoint().getPhiRadians())/Math.sin(toRadians(getBPoint().getLambda() - lambdaR))));
         }
 
         this.setHeight1(90 - Math.abs(phiVertex));
@@ -91,76 +96,5 @@ public class Orthodrome {
         //input
     }
 
-    private Point getaPoint() {
-        return aPoint;
-    }
-
-    private void setaPoint(Point aPoint) {
-        this.aPoint = aPoint;
-    }
-
-    private Point getbPoint() {
-        return bPoint;
-    }
-
-    private void setbPoint(Point bPoint) {
-        this.bPoint = bPoint;
-    }
-
-    private Case getCaseType() {
-        return caseType;
-    }
-
-    private void setCaseType(Case caseType) {
-        this.caseType = caseType;
-    }
-
-    private double getDistanceAngles() {
-        return distanceAngles;
-    }
-
-    private void setDistanceAngles(double distanceAngles) {
-        this.distanceAngles = distanceAngles;
-    }
-
-    private double getDistanceNm() {
-        return distanceNm;
-    }
-
-    private void setDistanceNm(double distanceNm) {
-        this.distanceNm = distanceNm;
-    }
-
-    private void setDistanceKm(double distanceKm) {
-        this.distanceKm = distanceKm;
-    }
-
-    private double getHeight1() {
-        return height1;
-    }
-
-    private void setHeight1(double height1) {
-        this.height1 = height1;
-    }
-
-    private void setHeight2(double height2) {
-        this.height2 = height2;
-    }
-
-    Point getFirstOrthodromeVertex() {
-        return firstOrthodromeVertex;
-    }
-
-    private void setFirstOrthodromeVertex(Point firstOrthodromeVertex) {
-        this.firstOrthodromeVertex = firstOrthodromeVertex;
-    }
-
-    Point getSecondOrthodromeVertex() {
-        return secondOrthodromeVertex;
-    }
-
-    private void setSecondOrthodromeVertex(Point secondOrthodromeVertex) {
-        this.secondOrthodromeVertex = secondOrthodromeVertex;
-    }
 
 }

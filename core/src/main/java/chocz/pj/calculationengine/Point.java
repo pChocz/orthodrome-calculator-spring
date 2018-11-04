@@ -1,19 +1,24 @@
 package chocz.pj.calculationengine;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import static chocz.pj.util.Converter.toRadians;
 
+@Setter
+@Getter
 public class Point {
 
-    public String latSide;
+    private String latSide;
     public double latDeg;
     public double latMin;
-    public String longSide;
+    private String longSide;
     public double longDeg;
     public double longMin;
-    public double latCalculated;
-    public double longCalculated;
-    public double phi;
-    public double lambda;
+    private double latCalculated;
+    private double longCalculated;
+    private double phi;
+    private double lambda;
     double phiRadians;
     double lambdaRadians;
 
@@ -66,71 +71,6 @@ public class Point {
         } else {
             this.setLongSide("");
         }
-    }
-
-    private void setLatSide(String latSide) {
-        this.latSide = latSide;
-    }
-
-    private void setLatDeg(double latDeg) {
-        this.latDeg = latDeg;
-    }
-
-    private void setLatMin(double latMin) {
-        this.latMin = latMin;
-    }
-
-    private void setLongSide(String longSide) {
-        this.longSide = longSide;
-    }
-
-    private void setLongDeg(double longDeg) {
-        this.longDeg = longDeg;
-    }
-
-    private void setLongMin(double longMin) {
-        this.longMin = longMin;
-    }
-
-    private void setLatCalculated(double latCalculated) {
-        this.latCalculated = latCalculated;
-    }
-
-    private void setLongCalculated(double longCalculated) {
-        this.longCalculated = longCalculated;
-    }
-
-    double getPhi() {
-        return phi;
-    }
-
-    private void setPhi(double phi) {
-        this.phi = phi;
-    }
-
-
-    double getLambda() {
-        return lambda;
-    }
-
-    private void setLambda(double lambda) {
-        this.lambda = lambda;
-    }
-
-    double getPhiRadians() {
-        return phiRadians;
-    }
-
-    private void setPhiRadians(double phiRadians) {
-        this.phiRadians = phiRadians;
-    }
-
-    double getLambdaRadians() {
-        return lambdaRadians;
-    }
-
-    private void setLambdaRadians(double lambdaRadians) {
-        this.lambdaRadians = lambdaRadians;
     }
 
 }

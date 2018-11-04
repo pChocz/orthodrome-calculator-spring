@@ -26,7 +26,7 @@ public class Loxodrome {
         this.lengthNm = calculateLoxodrome();
         this.lengthKm = this.lengthNm*1.852;
 
-        this.orthodromeGainNm = this.lengthNm - orthodrome.distanceNm;
+        this.orthodromeGainNm = this.lengthNm - orthodrome.getDistanceNm();
         this.orthodromeGainKm = this.orthodromeGainNm*1.852;
 
         this.bearing = calculateBearing();
@@ -46,7 +46,7 @@ public class Loxodrome {
         if (caseType == Case.GENERAL) {
             return Math.sqrt(deltaPhiRadians*deltaPhiRadians + q*q*deltaLambdaRadians*deltaLambdaRadians)*3440;
         } else {
-            return orthodrome.distanceNm;
+            return orthodrome.getDistanceNm();
         }
     }
 

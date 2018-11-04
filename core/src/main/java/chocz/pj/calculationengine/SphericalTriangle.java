@@ -30,10 +30,10 @@ public class SphericalTriangle {
     }
 
     private void calculateSphericalTriangle() {
-        this.a = 90 - bPoint.phi;
+        this.a = 90 - bPoint.getPhi();
         this.aRadians = toRadians(a);
 
-        this.b = 90 - aPoint.phi;
+        this.b = 90 - aPoint.getPhi();
         this.bRadians = toRadians(b);
 
         this.C = calculateC();
@@ -51,7 +51,7 @@ public class SphericalTriangle {
     }
 
     private double calculateC() {
-        double C = Math.abs(bPoint.lambda - aPoint.lambda);
+        double C = Math.abs(bPoint.getLambda() - aPoint.getLambda());
         return (C <= 180) ? (C) : (360 - C);
     }
 

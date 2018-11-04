@@ -207,17 +207,17 @@ public class SecondaryTextCreator {
         } else {
             return "\n" +
                     CORRECT_VALUES_STRING[languageCode] + SEPARATOR_DASH + GENERAL_CASE_STRING[languageCode] + "\n\n\n\n\n\n\n\n\n\n\n\n\n" +
-                    checkHomogeneousAngles(allResults.sphericalTriangle) + "\n\n\n\n\n\n\n\n\n\n\n" +
+                    checkHomogeneousAngles(allResults.getSphericalTriangle()) + "\n\n\n\n\n\n\n\n\n\n\n" +
                     ORTHODROME_GAIN_STRING[languageCode] +
                     String.valueOf(String.format("%.2f", allResults.loxodrome.orthodromeGainNm)) + " " + LENGTH_UNIT_NM[languageCode] +
                     " (" +  String.valueOf(String.format("%.2f", allResults.loxodrome.orthodromeGainKm)) + " " + LENGTH_UNIT_KM + ")." + "\n\n" +
                     LOXODROMIC_BEARING_STRING[languageCode] + ddToDmString("", allResults.loxodrome.bearing) + "\n\n\n\n\n" +
-                    SAIL_DIRECTION_STRING[languageCode] + allResults.bearingAngles.direction;
+                    SAIL_DIRECTION_STRING[languageCode] + allResults.getBearingAngles().direction;
         }
     }
 
     private String[] meridianSailBearingAnglesInfo(Point aPoint, Point bPoint) {
-        if (aPoint.phi > bPoint.phi) {
+        if (aPoint.getPhi() > bPoint.getPhi()) {
             return new String[] {
                     " - Kąt drogi wynosi stale 180°00.0' (prosto na południe)",
                     " - Angle of the bearing is 180°00.0' (straight south)"};
@@ -229,7 +229,7 @@ public class SecondaryTextCreator {
     }
 
     private String[] equatorSailBearingAnglesInfo(Point aPoint, Point bPoint) {
-        if (aPoint.lambda > bPoint.lambda) {
+        if (aPoint.getLambda() > bPoint.getLambda()) {
             return new String[] {
                     " - Kąt drogi wynosi stale 270°00.0' (prosto na zachód)",
                     " - Angle of the bearing is 270°00.0' (straight west)"};

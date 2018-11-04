@@ -1,5 +1,10 @@
 package chocz.pj.calculationengine;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class BearingAngles {
 
     //input
@@ -9,23 +14,23 @@ public class BearingAngles {
     private Case caseType;
 
     //output
-    public double initialBearing;
-    public double finalBearing;
+    private double initialBearing;
+    private double finalBearing;
     public String direction;
 
 
     public BearingAngles(SphericalTriangle sphericalTriangle, Point aPoint, Point bPoint, Case caseType) {
         this.setSphericalTriangle(sphericalTriangle);
-        this.setaPoint(aPoint);
-        this.setbPoint(bPoint);
+        this.setAPoint(aPoint);
+        this.setBPoint(bPoint);
         this.setCaseType(caseType);
 
         calculateBearingAngles();
     }
 
     private void calculateBearingAngles() {
-        double sumPhi = this.getbPoint().getPhi() + this.getaPoint().getPhi();
-        double deltaLambda = this.getbPoint().getLambda() - this.getaPoint().getLambda();
+        double sumPhi = this.getBPoint().getPhi() + this.getAPoint().getPhi();
+        double deltaLambda = this.getBPoint().getLambda() - this.getAPoint().getLambda();
 
         if ((deltaLambda > 0 && deltaLambda < 180) || (deltaLambda < -180 && deltaLambda > -360)) {
             this.setDirection("W->E");
@@ -50,7 +55,7 @@ public class BearingAngles {
 
     private void verifySpecialCasesBearingAngles() {
         if (getCaseType() == Case.EQUATOR_SAIL) {
-            if (getaPoint().getLambda() > getbPoint().getLambda()) {
+            if (getAPoint().getLambda() > getBPoint().getLambda()) {
                 this.setInitialBearing(270);
                 this.setFinalBearing(270);
 
@@ -60,7 +65,7 @@ public class BearingAngles {
             }
 
         } else if (getCaseType() == Case.MERIDIAN_SAIL) {
-            if (getaPoint().getPhi() > getbPoint().getPhi()) {
+            if (getAPoint().getPhi() > getBPoint().getPhi()) {
                 this.setInitialBearing(180);
                 this.setFinalBearing(180);
 
@@ -73,54 +78,6 @@ public class BearingAngles {
             this.setInitialBearing(999);
             this.setFinalBearing(999);
         }
-    }
-
-    SphericalTriangle getSphericalTriangle() {
-        return sphericalTriangle;
-    }
-
-    private void setSphericalTriangle(SphericalTriangle sphericalTriangle) {
-        this.sphericalTriangle = sphericalTriangle;
-    }
-
-    Point getaPoint() {
-        return aPoint;
-    }
-
-    private void setaPoint(Point aPoint) {
-        this.aPoint = aPoint;
-    }
-
-    Point getbPoint() {
-        return bPoint;
-    }
-
-    private void setbPoint(Point bPoint) {
-        this.bPoint = bPoint;
-    }
-
-    private Case getCaseType() {
-        return caseType;
-    }
-
-    private void setCaseType(Case caseType) {
-        this.caseType = caseType;
-    }
-
-    private void setInitialBearing(double initialBearing) {
-        this.initialBearing = initialBearing;
-    }
-
-    private void setFinalBearing(double finalBearing) {
-        this.finalBearing = finalBearing;
-    }
-
-    private String getDirection() {
-        return direction;
-    }
-
-    private void setDirection(String direction) {
-        this.direction = direction;
     }
 
 }

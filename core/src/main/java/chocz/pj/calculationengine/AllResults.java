@@ -1,16 +1,21 @@
 package chocz.pj.calculationengine;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class AllResults {
 
     public Point aPoint;
     public Point bPoint;
-    public Orthodrome orthodrome;
+    private Orthodrome orthodrome;
     public Loxodrome loxodrome;
-    public SphericalTriangle sphericalTriangle;
-    public BearingAngles bearingAngles;
-    public Point firstOrthodromeVertex;
+    private SphericalTriangle sphericalTriangle;
+    private BearingAngles bearingAngles;
+    private Point firstOrthodromeVertex;
     public Point secondOrthodromeVertex;
-    public Case caseType;
+    private Case caseType;
 
     /**
      * It summarizes all results needed for printing out
@@ -23,10 +28,10 @@ public class AllResults {
         this.setBearingAngles(bearingAngles);
         this.setFirstOrthodromeVertex(orthodrome.getFirstOrthodromeVertex());
         this.setSecondOrthodromeVertex(orthodrome.getSecondOrthodromeVertex());
-        this.setaPoint(bearingAngles.getaPoint());
-        this.setbPoint(bearingAngles.getbPoint());
+        this.setAPoint(bearingAngles.getAPoint());
+        this.setBPoint(bearingAngles.getBPoint());
         this.setSphericalTriangle(bearingAngles.getSphericalTriangle());
-        this.setCaseType(verifySpecialCases(getaPoint(), getbPoint()));
+        this.setCaseType(verifySpecialCases(getAPoint(), getBPoint()));
     }
 
     public AllResults(Point aPoint, Point bPoint) {
@@ -40,81 +45,25 @@ public class AllResults {
     }
 
     protected Case verifySpecialCases(Point aPoint, Point bPoint) {
-        double difLambda = Math.abs(aPoint.lambda - bPoint.lambda);
-        double sumPhi = aPoint.phi + bPoint.phi;
+        double difLambda = Math.abs(aPoint.getLambda() - bPoint.getLambda());
+        double sumPhi = aPoint.getPhi() + bPoint.getPhi();
 
-        if (((aPoint.lambda == bPoint.lambda) && (aPoint.phi == bPoint.phi)) || (aPoint.phi*bPoint.phi == 8100)) {
+        if (((aPoint.getLambda() == bPoint.getLambda()) && (aPoint.getPhi() == bPoint.getPhi())) || (aPoint.getPhi()*bPoint.getPhi() == 8100)) {
             return Case.SAME_POINT;
 
-        } else if (((difLambda == 180) && (sumPhi == 0)) || ((aPoint.lambda == 0) && (bPoint.lambda == 0) && (sumPhi == 0))) {
+        } else if (((difLambda == 180) && (sumPhi == 0)) || ((aPoint.getLambda() == 0) && (bPoint.getLambda() == 0) && (sumPhi == 0))) {
             return Case.OPPOSITE_POINTS;
 
-        } else if ((aPoint.phi == 0) && (bPoint.phi == 0)) {
+        } else if ((aPoint.getPhi() == 0) && (bPoint.getPhi() == 0)) {
             return Case.EQUATOR_SAIL;
 
-        } else if ((aPoint.lambda == bPoint.lambda) || (difLambda == 180) || (aPoint.phi*bPoint.phi == -8100) || (Math.abs(aPoint.phi) == 90 || Math.abs(bPoint.phi) == 90)) {
+        } else if ((aPoint.getLambda() == bPoint.getLambda()) || (difLambda == 180) || (aPoint.getPhi()*bPoint.getPhi() == -8100) || (Math.abs(aPoint.getPhi()) == 90 || Math.abs(bPoint.getPhi()) == 90)) {
             return Case.MERIDIAN_SAIL;
 
         } else {
             return Case.GENERAL;
 
         }
-    }
-
-    private Point getaPoint() {
-        return aPoint;
-    }
-
-    private void setaPoint(Point aPoint) {
-        this.aPoint = aPoint;
-    }
-
-    private Point getbPoint() {
-        return bPoint;
-    }
-
-    private void setbPoint(Point bPoint) {
-        this.bPoint = bPoint;
-    }
-
-    private Orthodrome getOrthodrome() {
-        return orthodrome;
-    }
-
-    private void setOrthodrome(Orthodrome orthodrome) {
-        this.orthodrome = orthodrome;
-    }
-
-    private void setLoxodrome(Loxodrome loxodrome) {
-        this.loxodrome = loxodrome;
-    }
-
-    private SphericalTriangle getSphericalTriangle() {
-        return sphericalTriangle;
-    }
-
-    private void setSphericalTriangle(SphericalTriangle sphericalTriangle) {
-        this.sphericalTriangle = sphericalTriangle;
-    }
-
-    private void setBearingAngles(BearingAngles bearingAngles) {
-        this.bearingAngles = bearingAngles;
-    }
-
-    private void setFirstOrthodromeVertex(Point firstOrthodromeVertex) {
-        this.firstOrthodromeVertex = firstOrthodromeVertex;
-    }
-
-    private void setSecondOrthodromeVertex(Point secondOrthodromeVertex) {
-        this.secondOrthodromeVertex = secondOrthodromeVertex;
-    }
-
-    private Case getCaseType() {
-        return caseType;
-    }
-
-    private void setCaseType(Case caseType) {
-        this.caseType = caseType;
     }
 
 }
