@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <TITLE>Kalkulator ortodromy</TITLE>
+
+    <META name="keywords"
+          content="kalkulator ortodromy, ortodroma, żegluga po ortodromie, wierzchołki ortodromy,
+          odległość ortodromiczna, kąty drogi, Piotr Choczyński, nawigacja">
+
+    <META name="description"
+          content="Skrypt umożliwiający wyznaczenie podstawowych elementów ortodromy:
+          odległość ortodromiczną, początkowy oraz końcowy kąt drogi, współrzędne
+          wierzchołków ortodromy wraz ze wszystkimi parametrami potrzebnymi do obliczeń.">
+</head>
+
+<style>
+html {
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: rgb(250, 250, 250) no-repeat;
+}
+
+.textAreaColumn {
+    width: 100%;
+}
+
+.textAreaColumn div {
+    float: left;
+    width: 500px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 13px;
+}
+
+.textAreaColumn div textarea {
+    background: transparent;
+    box-sizing: border-box;
+    width: 100%;
+    border: none;
+    height: 610px;
+    resize: none;
+    overflow: hidden;
+}
+
+.custom {
+    width: 150px !important;
+}
+
+.custom3 {
+    width: 330px !important;
+}
+
+.custom_page {
+    width: 50px !important;
+}
+
+.custom_well {
+    width: 298px !important;
+    margin-left: 10px !important;
+    margin-top: -10px !important;
+    height: 180px !important;
+    border: 1px solid black !important;
+    border-radius: 0 !important;
+}
+
+.custom_well_2 {
+    width: 490px !important;
+    margin-right: 8px !important;
+    height: 629px !important;
+    border: 1px solid black !important;
+    border-radius: 0 !important;
+}
+
+.grey_1 {
+    background-color: rgb(245, 245, 245) !important;
+    border: 1px solid black !important;
+    font-family: "Lucida Console", Monaco, monospace !important;
+    font-size: 11px !important;
+    border-radius: 0 !important;
+}
+
+.grey_2 {
+    background-color: rgb(225, 225, 225) !important;
+    border: 1px solid black !important;
+    font-family: "Lucida Console", Monaco, monospace !important;
+    font-size: 14px !important;
+    height: 55px !important;
+    margin-top: 10px !important;
+    margin-bottom: -10px !important;
+    border-radius: 0 !important;
+}
+
+.examples {
+    margin-bottom: -15px !important;
+    padding-top: 3px !important;
+    padding-bottom: 2px !important;
+}
+
+.margin {
+    margin-bottom: 30px !important;
+}
+
+</style>
+
+<!--  BOOTSTRAP  -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<body>
+<form name="form">
+
+    <div class="textAreaColumn" style="margin-left: 30px; margin-top: 30px;">
+
+        <div class="custom3">
+
+            <div class="well custom_well">
+
+                <table class='table borderless'>
+                    <tr>
+                        <td colspan="2">
+                            <center>Parametry wejściowe</center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle">A</td>
+                        <td><input type="text" name="a_szer_kat" size="4"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> °
+                            <input type="text" name="a_szer_min" size="5"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> '
+                            <input type="text" name="a_szer_strona" value="N" size="2" readonly="readonly"
+                                   style="text-align:center"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)">
+                            <input type="button" class="btn btn-default btn-xs custom_page" value="N/S"
+                                   onClick="zamien_ns(form.a_szer_strona)">
+                            <br>
+                            <input type="text" name="a_dlug_kat" size="4"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> °
+                            <input type="text" name="a_dlug_min" size="5"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> '
+                            <input type="text" name="a_dlug_strona" value="E" size="2" readonly="readonly"
+                                   style="text-align:center"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)">
+                            <input type="button" class="btn btn-default btn-xs custom_page" value="E/W"
+                                   onClick="zamien_ew(form.a_dlug_strona)"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle">B</td>
+                        <td><input type="text" name="b_szer_kat" size="4"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> °
+                            <input type="text" name="b_szer_min" size="5"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> '
+                            <input type="text" name="b_szer_strona" value="N" size="2" readonly="readonly"
+                                   style="text-align:center"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)">
+                            <input type="button" class="btn btn-default btn-xs custom_page" value="N/S"
+                                   onClick="zamien_ns(form.b_szer_strona)">
+                            <br>
+                            <input type="text" name="b_dlug_kat" size="4"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> °
+                            <input type="text" name="b_dlug_min" size="5"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> '
+                            <input type="text" name="b_dlug_strona" value="E" size="2" readonly="readonly"
+                                   style="text-align:center"
+                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)">
+                            <input type="button" class="btn btn-default btn-xs custom_page" value="E/W"
+                                   onClick="zamien_ew(form.b_dlug_strona)">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="btn-group margin">
+                <button type="button" class="btn btn-default custom grey_2" onClick="fclear(this.form);instrukcja()">
+                    Wyczyść/Info
+                </button>
+                <button type="button" class="btn btn-default custom grey_2" onClick="glowny_guzik(this.form)">
+                    Przelicz
+                </button>
+            </div>
+
+
+            <b>&nbsp;Przykłady dla przypadków ogólnych</b>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_01(this.form)">
+                    A(10°N;050°E)<br>B(20°N;170°E)
+                </button>
+                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_02(this.form)">
+                    A(50°N;020°W)<br>B(50°N;090°E)
+                </button>
+            </div>
+            <br>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_03(this.form)">
+                    A(50°N;030°E)<br>B(30°N;060°E)
+                </button>
+                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_04(this.form)">
+                    A(50°N;170°W)<br>B(10°S;100°W)
+                </button>
+            </div>
+            <br>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_05(this.form)">
+                    A(30°S;060°E)<br>B(40°S;140°E)
+                </button>
+                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_06(this.form)">
+                    A(20°S;100°W)<br>B(30°N;160°W)
+                </button>
+            </div>
+            <br>
+            <div class="btn-group margin">
+                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_07(this.form)">A(
+                    0° ;070°E)<br>B(20°S;120°W)
+                </button>
+                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_08(this.form)">
+                    A(40°S;090°W)<br>B( 0° ;130°W)
+                </button>
+            </div>
+
+            <br><br><br>
+
+            <b>&nbsp;Przykłady dla przypadków szczególnych</b>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_11(this.form)">
+                    A(90°N )<br>B(90°S )
+                </button>
+                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_12(this.form)">
+                    A(40°N;030°E)<br>B(40°S;150°W)
+                </button>
+            </div>
+            <br>
+            <div class="btn-group margin">
+                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_13(this.form)">
+                    A(20°N;030°E)<br>B(40°S;030°E)
+                </button>
+                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_14(this.form)">A(
+                    0° ;010°E)<br>B( 0° ;050°W)
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="well custom_well_2">
+            <textarea name="komentarz_obl" disabled>  </textarea>
+            <div style="margin-top: 2px;">Piotr Choczyński (<a href=mailto:piotr@choczynski.pl>piotr@choczynski.pl</a>)
+                2017
+            </div>
+            <br>
+        </div>
+        <div class="well custom_well_2">
+            <textarea name="komentarz" disabled>  </textarea>
+            <div style="margin-top: 2px;">kalkulator ortodromy v1.0 /
+                <a href="zestaw-wzorow-v2.1-elektr.pdf" target="_blank">TABLICE</a>
+                <br>
+            </div>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>
