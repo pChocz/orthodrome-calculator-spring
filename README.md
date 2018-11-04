@@ -26,6 +26,8 @@ use working JavaFX application from the link mentioned above.
 - [ ] Link logic code to the Thymeleaf template
 - [ ] Set up automatic tests and confirm that application is working
 - [ ] Deploy a project to an external server
+- [ ] Additional milestone: Merge both (JavaFX and Spring) projects together
+      so they can share the same CORE module
 
 ### Theory first
 
