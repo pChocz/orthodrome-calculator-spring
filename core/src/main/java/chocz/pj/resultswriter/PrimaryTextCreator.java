@@ -93,8 +93,8 @@ public class PrimaryTextCreator {
             "south pole"};
 
     private static final String[] LENGTH_UNIT_NM = {
-            "Nm",
-            "Mm"};
+            "Mm",
+            "Nm"};
 
     private static final String LENGTH_UNIT_KM = "km";
 

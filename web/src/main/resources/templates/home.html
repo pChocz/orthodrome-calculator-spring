@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 
-
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="home-style.css">
+
     <TITLE>Kalkulator ortodromy</TITLE>
 
     <META name="keywords"
@@ -16,104 +17,9 @@
           wierzchołków ortodromy wraz ze wszystkimi parametrami potrzebnymi do obliczeń.">
 </head>
 
-<style>
-html {
-    height: 100%;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background: rgb(250, 250, 250) no-repeat;
-}
-
-.textAreaColumn {
-    width: 100%;
-}
-
-.textAreaColumn div {
-    float: left;
-    width: 500px;
-    padding: 10px;
-    box-sizing: border-box;
-    font-family: "Lucida Console", Monaco, monospace;
-    font-size: 13px;
-}
-
-.textAreaColumn div textarea {
-    background: transparent;
-    box-sizing: border-box;
-    width: 100%;
-    border: none;
-    height: 610px;
-    resize: none;
-    overflow: hidden;
-}
-
-.custom {
-    width: 150px !important;
-}
-
-.custom3 {
-    width: 330px !important;
-}
-
-.custom_page {
-    width: 50px !important;
-}
-
-.custom_well {
-    width: 298px !important;
-    margin-left: 10px !important;
-    margin-top: -10px !important;
-    height: 180px !important;
-    border: 1px solid black !important;
-    border-radius: 0 !important;
-}
-
-.custom_well_2 {
-    width: 490px !important;
-    margin-right: 8px !important;
-    height: 629px !important;
-    border: 1px solid black !important;
-    border-radius: 0 !important;
-}
-
-.grey_1 {
-    background-color: rgb(245, 245, 245) !important;
-    border: 1px solid black !important;
-    font-family: "Lucida Console", Monaco, monospace !important;
-    font-size: 11px !important;
-    border-radius: 0 !important;
-}
-
-.grey_2 {
-    background-color: rgb(225, 225, 225) !important;
-    border: 1px solid black !important;
-    font-family: "Lucida Console", Monaco, monospace !important;
-    font-size: 14px !important;
-    height: 55px !important;
-    margin-top: 10px !important;
-    margin-bottom: -10px !important;
-    border-radius: 0 !important;
-}
-
-.examples {
-    margin-bottom: -15px !important;
-    padding-top: 3px !important;
-    padding-bottom: 2px !important;
-}
-
-.margin {
-    margin-bottom: 30px !important;
-}
-
-</style>
-
 <!--  BOOTSTRAP  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <body>
 <form name="form">
@@ -253,13 +159,16 @@ html {
 
         <div class="well custom_well_2">
             <textarea name="komentarz_obl" disabled>  </textarea>
-            <div style="margin-top: 2px;">Piotr Choczyński (<a href=mailto:piotr@choczynski.pl>piotr@choczynski.pl</a>)
+            <div style="margin-top: 2px;">Piotr Choczyński (<a href=mailto:piotr@choczynski.pl
+                                                               title="Orthodrome Calculator question">piotr@choczynski.pl</a>)
                 2017
             </div>
             <br>
         </div>
         <div class="well custom_well_2">
-            <textarea name="komentarz" disabled>  </textarea>
+            <label>
+                <textarea name="komentarz" disabled>  </textarea>
+            </label>
             <div style="margin-top: 2px;">kalkulator ortodromy v1.0 /
                 <a href="zestaw-wzorow-v2.1-elektr.pdf" target="_blank">TABLICE</a>
                 <br>

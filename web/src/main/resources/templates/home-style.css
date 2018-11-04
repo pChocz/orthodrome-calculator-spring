@@ -1,0 +1,89 @@
+html {
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: rgb(250, 250, 250) no-repeat;
+}
+
+.textAreaColumn {
+    width: 100%;
+}
+
+.textAreaColumn div {
+    float: left;
+    width: 500px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 13px;
+}
+
+.textAreaColumn div textarea {
+    background: transparent;
+    box-sizing: border-box;
+    width: 100%;
+    border: none;
+    height: 610px;
+    resize: none;
+    overflow: hidden;
+}
+
+.custom {
+    width: 150px !important;
+}
+
+.custom3 {
+    width: 330px !important;
+}
+
+.custom_page {
+    width: 50px !important;
+}
+
+.custom_well {
+    width: 298px !important;
+    margin-left: 10px !important;
+    margin-top: -10px !important;
+    height: 180px !important;
+    border: 1px solid black !important;
+    border-radius: 0 !important;
+}
+
+.custom_well_2 {
+    width: 490px !important;
+    margin-right: 8px !important;
+    height: 629px !important;
+    border: 1px solid black !important;
+    border-radius: 0 !important;
+}
+
+.grey_1 {
+    background-color: rgb(245, 245, 245) !important;
+    border: 1px solid black !important;
+    font-family: "Lucida Console", Monaco, monospace !important;
+    font-size: 11px !important;
+    border-radius: 0 !important;
+}
+
+.grey_2 {
+    background-color: rgb(225, 225, 225) !important;
+    border: 1px solid black !important;
+    font-family: "Lucida Console", Monaco, monospace !important;
+    font-size: 14px !important;
+    height: 55px !important;
+    margin-top: 10px !important;
+    margin-bottom: -10px !important;
+    border-radius: 0 !important;
+}
+
+.examples {
+    margin-bottom: -15px !important;
+    padding-top: 3px !important;
+    padding-bottom: 2px !important;
+}
+
+.margin {
+    margin-bottom: 30px !important;
+}
