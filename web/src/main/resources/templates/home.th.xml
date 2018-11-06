@@ -1,0 +1,4 @@
+<thlogic>
+    <attr sel="#input-parameters" th:text="#{form.inputParameters}"/>
+    <attr sel="#clear-info-button" th:text="#{form.clearInfoButton}"/>
+</thlogic>
