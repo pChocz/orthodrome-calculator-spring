@@ -11,6 +11,12 @@ html {
     width: 100%;
 }
 
+.cases-label{
+    font-weight:bold;
+    padding-top: -20px !important;
+    padding-bottom: -20px !important;
+}
+
 .textAreaColumn div {
     float: left;
     width: 500px;

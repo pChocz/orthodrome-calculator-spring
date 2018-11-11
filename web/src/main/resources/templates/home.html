@@ -1,20 +1,13 @@
 <!DOCTYPE HTML>
+<!--suppress XmlDuplicatedId -->
 <html>
 
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/home-style.css">
-
-    <TITLE>Kalkulator ortodromy</TITLE>
-
-    <META name="keywords"
-          content="kalkulator ortodromy, ortodroma, żegluga po ortodromie, wierzchołki ortodromy,
-          odległość ortodromiczna, kąty drogi, Piotr Choczyński, nawigacja">
-
-    <META name="description"
-          content="Skrypt umożliwiający wyznaczenie podstawowych elementów ortodromy:
-          odległość ortodromiczną, początkowy oraz końcowy kąt drogi, współrzędne
-          wierzchołków ortodromy wraz ze wszystkimi parametrami potrzebnymi do obliczeń.">
+    <TITLE id="title">Orthodrome Calculator</TITLE>
+    <META name="keywords" id="meta-keywords">
+    <META name="description" id="meta-description">
 </head>
 
 <!--  BOOTSTRAP  -->
@@ -38,49 +31,32 @@
                     </tr>
                     <tr>
                         <td style="vertical-align:middle">A</td>
-                        <td><input type="text" name="a_szer_kat" size="4"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> °
-                            <input type="text" name="a_szer_min" size="5"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> '
-                            <input type="text" name="a_szer_strona" value="N" size="2" readonly="readonly"
-                                   style="text-align:center"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)">
-                            <input type="button" class="btn btn-default btn-xs custom_page" value="N/S"
-                                   onClick="zamien_ns(form.a_szer_strona)">
+                        <td><input type="text" name="a-lat-degree" size="4"> °
+                            <input type="text" name="a-lat-minute" size="5"> '
+                            <input type="text" name="a-lat-side" value="N" size="2" readonly="readonly"
+                                   style="text-align:center">
+                            <input type="button" class="btn btn-default btn-xs custom_page" value="N/S">
                             <br>
-                            <input type="text" name="a_dlug_kat" size="4"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> °
-                            <input type="text" name="a_dlug_min" size="5"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> '
-                            <input type="text" name="a_dlug_strona" value="E" size="2" readonly="readonly"
-                                   style="text-align:center"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)">
-                            <input type="button" class="btn btn-default btn-xs custom_page" value="E/W"
-                                   onClick="zamien_ew(form.a_dlug_strona)"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)">
+                            <input type="text" name="a-long-degree" size="4"> °
+                            <input type="text" name="a-long-minute" size="5"> '
+                            <input type="text" name="a-long-side" value="E" size="2" readonly="readonly"
+                                   style="text-align:center">
+                            <input type="button" class="btn btn-default btn-xs custom_page" value="E/W">
                         </td>
                     </tr>
                     <tr>
                         <td style="vertical-align:middle">B</td>
-                        <td><input type="text" name="b_szer_kat" size="4"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> °
-                            <input type="text" name="b_szer_min" size="5"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> '
-                            <input type="text" name="b_szer_strona" value="N" size="2" readonly="readonly"
-                                   style="text-align:center"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)">
-                            <input type="button" class="btn btn-default btn-xs custom_page" value="N/S"
-                                   onClick="zamien_ns(form.b_szer_strona)">
+                        <td><input type="text" name="b-lat-degree" size="4"> °
+                            <input type="text" name="b-lat-minute" size="5"> '
+                            <input type="text" name="b-lat-side" value="N" size="2" readonly="readonly"
+                                   style="text-align:center">
+                            <input type="button" class="btn btn-default btn-xs custom_page" value="N/S">
                             <br>
-                            <input type="text" name="b_dlug_kat" size="4"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> °
-                            <input type="text" name="b_dlug_min" size="5"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)"> '
-                            <input type="text" name="b_dlug_strona" value="E" size="2" readonly="readonly"
-                                   style="text-align:center"
-                                   onkeypress="if (event.keyCode == 13) glowny_guzik(this.form)">
-                            <input type="button" class="btn btn-default btn-xs custom_page" value="E/W"
-                                   onClick="zamien_ew(form.b_dlug_strona)">
+                            <input type="text" name="b-long-degree" size="4"> °
+                            <input type="text" name="b-long-minute" size="5"> '
+                            <input type="text" name="b-long-side" value="E" size="2" readonly="readonly"
+                                   style="text-align:center">
+                            <input type="button" class="btn btn-default btn-xs custom_page" value="E/W">
                         </td>
                     </tr>
                 </table>
@@ -90,66 +66,66 @@
                 <button type="button" class="btn btn-default custom grey_2" id="clear-info-button">
                     Clear/Info
                 </button>
-                <button type="button" class="btn btn-default custom grey_2">
-                    Przelicz
+                <button type="button" class="btn btn-default custom grey_2" id="calculate-button">
+                    Calculate
                 </button>
             </div>
 
 
-            <b>&nbsp;Przykłady dla przypadków ogólnych</b>
+            <div class="cases-label" id="general-cases">General Cases</div>
             <div class="btn-group">
-                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_01(this.form)">
+                <button type="button" class="btn btn-default custom grey_1 examples">
                     A(10°N;050°E)<br>B(20°N;170°E)
                 </button>
-                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_02(this.form)">
+                <button type="button" class="btn btn-default custom grey_1 examples">
                     A(50°N;020°W)<br>B(50°N;090°E)
                 </button>
             </div>
             <br>
             <div class="btn-group">
-                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_03(this.form)">
+                <button type="button" class="btn btn-default custom grey_1 examples">
                     A(50°N;030°E)<br>B(30°N;060°E)
                 </button>
-                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_04(this.form)">
+                <button type="button" class="btn btn-default custom grey_1 examples">
                     A(50°N;170°W)<br>B(10°S;100°W)
                 </button>
             </div>
             <br>
             <div class="btn-group">
-                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_05(this.form)">
+                <button type="button" class="btn btn-default custom grey_1 examples">
                     A(30°S;060°E)<br>B(40°S;140°E)
                 </button>
-                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_06(this.form)">
+                <button type="button" class="btn btn-default custom grey_1 examples">
                     A(20°S;100°W)<br>B(30°N;160°W)
                 </button>
             </div>
             <br>
             <div class="btn-group margin">
-                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_07(this.form)">A(
+                <button type="button" class="btn btn-default custom grey_1 examples">A(
                     0° ;070°E)<br>B(20°S;120°W)
                 </button>
-                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_08(this.form)">
+                <button type="button" class="btn btn-default custom grey_1 examples">
                     A(40°S;090°W)<br>B( 0° ;130°W)
                 </button>
             </div>
 
             <br><br><br>
 
-            <b>&nbsp;Przykłady dla przypadków szczególnych</b>
+            <div class="cases-label" id="special-cases">Special Cases</div>
             <div class="btn-group">
-                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_11(this.form)">
+                <button type="button" class="btn btn-default custom grey_1 examples">
                     A(90°N )<br>B(90°S )
                 </button>
-                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_12(this.form)">
+                <button type="button" class="btn btn-default custom grey_1 examples">
                     A(40°N;030°E)<br>B(40°S;150°W)
                 </button>
             </div>
             <br>
             <div class="btn-group margin">
-                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_13(this.form)">
+                <button type="button" class="btn btn-default custom grey_1 examples">
                     A(20°N;030°E)<br>B(40°S;030°E)
                 </button>
-                <button type="button" class="btn btn-default custom grey_1 examples" onClick="przyklad_14(this.form)">A(
+                <button type="button" class="btn btn-default custom grey_1 examples">A(
                     0° ;010°E)<br>B( 0° ;050°W)
                 </button>
             </div>
@@ -158,21 +134,15 @@
 
 
         <div class="well custom_well_2">
-            <textarea name="komentarz_obl" disabled>  </textarea>
+            <textarea name="primary-result" disabled>  </textarea>
             <div style="margin-top: 2px;">Piotr Choczyński (<a href=mailto:piotr@choczynski.pl
                                                                title="Orthodrome Calculator question">piotr@choczynski.pl</a>)
-                2017
+                2018
             </div>
-            <br>
         </div>
         <div class="well custom_well_2">
-            <label>
-                <textarea name="komentarz" disabled>  </textarea>
-            </label>
-            <div style="margin-top: 2px;">kalkulator ortodromy v1.0 /
-                <a href="zestaw-wzorow-v2.1-elektr.pdf" target="_blank">TABLICE</a>
-                <br>
-            </div>
+            <textarea name="secondary-result" disabled>  </textarea>
+            <div style="margin-top: 2px;" id="title">Orthodrome Calculator</div>
         </div>
     </div>
 

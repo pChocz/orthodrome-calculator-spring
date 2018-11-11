@@ -1,4 +1,17 @@
 <thlogic>
+    <!-- static HTML meta information -->
+    <attr sel="#meta-keywords" th:content="#{meta.keywords}"/>
+    <attr sel="#meta-description" th:content="#{meta.description}"/>
+
+    <!-- static form elements -->
     <attr sel="#input-parameters" th:text="#{form.inputParameters}"/>
     <attr sel="#clear-info-button" th:text="#{form.clearInfoButton}"/>
+    <attr sel="#calculate-button" th:text="#{form.calculateButton}"/>
+    <attr sel="#title" th:text="#{form.title}"/>
+    <attr sel="#general-cases" th:text="#{form.generalCases}"/>
+    <attr sel="#special-cases" th:text="#{form.specialCases}"/>
+
+    <!-- dynamic form elements -->
+
+
 </thlogic>
