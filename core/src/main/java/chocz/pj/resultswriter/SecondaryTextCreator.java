@@ -206,12 +206,12 @@ public class SecondaryTextCreator {
 
         } else {
             return "\n" +
-                    CORRECT_VALUES_STRING[languageCode] + SEPARATOR_DASH + GENERAL_CASE_STRING[languageCode] + "\n\n\n\n\n\n\n\n\n\n\n\n\n" +
-                    checkHomogeneousAngles(allResults.getSphericalTriangle()) + "\n\n\n\n\n\n\n\n\n\n\n" +
+                    CORRECT_VALUES_STRING[languageCode] + SEPARATOR_DASH + GENERAL_CASE_STRING[languageCode] + "\n\n\n\n\n\n\n\n\n\n" +
+                    checkHomogeneousAngles(allResults.getSphericalTriangle()) + "\n\n\n\n" +
                     ORTHODROME_GAIN_STRING[languageCode] +
                     String.valueOf(String.format("%.2f", allResults.loxodrome.orthodromeGainNm)) + " " + LENGTH_UNIT_NM[languageCode] +
-                    " (" +  String.valueOf(String.format("%.2f", allResults.loxodrome.orthodromeGainKm)) + " " + LENGTH_UNIT_KM + ")." + "\n\n" +
-                    LOXODROMIC_BEARING_STRING[languageCode] + ddToDmString("", allResults.loxodrome.bearing) + "\n\n\n\n\n" +
+                    " (" +  String.valueOf(String.format("%.2f", allResults.loxodrome.orthodromeGainKm)) + " " + LENGTH_UNIT_KM + ")." + "\n\n\n\n" +
+                    LOXODROMIC_BEARING_STRING[languageCode] + ddToDmString("", allResults.loxodrome.bearing) + "\n\n\n\n" +
                     SAIL_DIRECTION_STRING[languageCode] + allResults.getBearingAngles().direction;
         }
     }

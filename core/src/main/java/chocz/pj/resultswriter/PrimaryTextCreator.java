@@ -144,19 +144,17 @@ public class PrimaryTextCreator {
     }
 
     private String printPhiAndLambdaValues(Point aPoint, Point bPoint) {
-        return "\n" +
-                "  φ_A =" + ddToDmString("phi", aPoint.getPhi()) + "\t\t" +
+        return "  φ_A =" + ddToDmString("phi", aPoint.getPhi()) + "\t\t" +
                 "  λ_A =" + ddToDmString("lambda", aPoint.getLambda()) +
                 "\n" +
                 "  φ_B =" + ddToDmString("phi", bPoint.getPhi()) + "\t\t" +
                 "  λ_B =" + ddToDmString("lambda", bPoint.getLambda()) +
-                "\n\n";
+                "\n";
     }
 
     private String printSphericalTriangleValues(SphericalTriangle sphericalTriangle, Orthodrome orthodrome) {
         if (caseType == Case.GENERAL) {
-            return "\n" +
-                    "  a = " + ddToDmString("long", sphericalTriangle.a) +
+            return "  a = " + ddToDmString("long", sphericalTriangle.a) +
                     "\n" +
                     "  b = " + ddToDmString("long", sphericalTriangle.b) +
                     "\n\n" +
@@ -166,11 +164,10 @@ public class PrimaryTextCreator {
                     "  h = " + ddToDmString("long", orthodrome.getHeight1()) + "  v " + ddToDmString("long", orthodrome.getHeight2()) +
                     "\n" +
                     "  B = " + ddToDmString("long", sphericalTriangle.B) +
-                    "\n\n";
+                    "\n";
 
         } else if (caseType == Case.MERIDIAN_SAIL || caseType == Case.OPPOSITE_POINTS) {
-            return "\n" +
-                    "  a = " + ddToDmString("long", sphericalTriangle.a) +
+            return "  a = " + ddToDmString("long", sphericalTriangle.a) +
                     "\n" +
                     "  b = " + ddToDmString("long", sphericalTriangle.b) +
                     "\n\n" +
@@ -180,11 +177,10 @@ public class PrimaryTextCreator {
                     "  h =  " + NOT_CALCULABLE_STRING[languageCode] +
                     "\n" +
                     "  B =  " + NOT_CALCULABLE_STRING[languageCode] +
-                    "\n\n";
+                    "\n";
 
         } else if (caseType == Case.EQUATOR_SAIL) {
-            return "\n" +
-                    "  a = " + ddToDmString("long", sphericalTriangle.a) +
+            return "  a = " + ddToDmString("long", sphericalTriangle.a) +
                     "\n" +
                     "  b = " + ddToDmString("long", sphericalTriangle.b) +
                     "\n\n" +
@@ -194,7 +190,7 @@ public class PrimaryTextCreator {
                     "  h = " + ddToDmString("long", orthodrome.getHeight1()) +
                     "\n" +
                     "  B = " + ddToDmString("long", sphericalTriangle.B) +
-                    "\n\n";
+                    "\n";
 
         } else {
             return "ERROR";
@@ -203,71 +199,63 @@ public class PrimaryTextCreator {
     }
 
     private String printOrthodromeValue(Orthodrome orthodrome) {
-        return "\n" +
-                "  d = " + ddToDmString("long", orthodrome.distanceAngles) +
+        return "  d = " + ddToDmString("long", orthodrome.distanceAngles) +
                 " = " + String.valueOf(String.format("%.2f", orthodrome.getDistanceNm())) + " " + LENGTH_UNIT_NM[languageCode] +
                 " = " + String.valueOf(String.format("%.2f", orthodrome.distanceKm)) + " " + LENGTH_UNIT_KM +
-                "\n\n";
+                "\n";
     }
 
     private String printLoxodromeValue(Loxodrome loxodrome) {
-        return "\n" +
-                "  s =           " +
+        return "  s =           " +
                 "   " + String.valueOf(String.format("%.2f", loxodrome.lengthNm)) + " " + LENGTH_UNIT_NM[languageCode] +
                 " = " + String.valueOf(String.format("%.2f", loxodrome.lengthKm)) + " " + LENGTH_UNIT_KM +
-                "\n\n";
+                "\n";
     }
 
     private String printBearingAngles(BearingAngles bearingAngles) {
         if (caseType == Case.OPPOSITE_POINTS) {
-            return "\n" +
-                    "  α =  " + FREE_TO_CHOOSE_STRING[languageCode] +
+            return "  α =  " + FREE_TO_CHOOSE_STRING[languageCode] +
                     "\n" +
                     "  β =  180° - α" +
-                    "\n\n";
+                    "\n";
         } else {
-            return "\n" +
-                    "  α = " + ddToDmString("long", bearingAngles.getInitialBearing()) +
+            return "  α = " + ddToDmString("long", bearingAngles.getInitialBearing()) +
                     "\n" +
                     "  β = " + ddToDmString("long", bearingAngles.getFinalBearing()) +
-                    "\n\n";
+                    "\n";
 
         }
     }
 
     private String printOrthodromeVertices(Point firstOrthodromeVertex, Point secondOrthodromeVertex) {
         if (caseType == Case.EQUATOR_SAIL) {
-            return "\n" +
-                    "  W1  (" + ddToDmString("lat", firstOrthodromeVertex.getLatCalculated(), firstOrthodromeVertex.getLatSide()) +
+            return "  W1  (" + ddToDmString("lat", firstOrthodromeVertex.getLatCalculated(), firstOrthodromeVertex.getLatSide()) +
                     "  ; xxx°xx,x' E/W )" +
                     "\n" +
                     "     " + ANY_POINT_ON_EQUATOR_STRING[languageCode] +
-                    "\n\n";
+                    "\n";
 
         } else if (caseType == Case.MERIDIAN_SAIL) {
-            return "\n" +
-                    "  W1  (" + ddToDmString("lat", firstOrthodromeVertex.getLatCalculated(), firstOrthodromeVertex.getLatSide()) +
+            return "  W1  (" + ddToDmString("lat", firstOrthodromeVertex.getLatCalculated(), firstOrthodromeVertex.getLatSide()) +
                     " ) - " + NORTH_POLE_STRING[languageCode] +
                     "\n" +
                     "  W2  (" + ddToDmString("lat", firstOrthodromeVertex.getLatCalculated(), firstOrthodromeVertex.getLatSide()) +
                     " ) - " + SOUTH_POLE_STRING[languageCode] +
-                    "\n\n";
+                    "\n";
 
         } else if (caseType == Case.OPPOSITE_POINTS) {
-            return "\n" +
-                    "  W1  ( xx°xx,x' N/S ; xxx°xx.x' E/W )" +
+            return "  W1  ( xx°xx,x' N/S ; xxx°xx.x' E/W )" +
                     "\n" +
                     "  W2  ( xx°xx,x' N/S ; xxx°xx.x' E/W )" +
-                    "\n\n";
+                    "\n";
 
         } else {
-            return "\n" +
-                    "  W1  (" + ddToDmString("lat", firstOrthodromeVertex.getLatCalculated(), firstOrthodromeVertex.getLatSide()) +
+            return "  W1  (" + ddToDmString("lat", firstOrthodromeVertex.getLatCalculated(), firstOrthodromeVertex.getLatSide()) +
                     "  ," + ddToDmString("long", firstOrthodromeVertex.getLongCalculated(), firstOrthodromeVertex.getLongSide()) + "  )" +
                     "\n" +
                     "  W2  (" + ddToDmString("lat", secondOrthodromeVertex.getLatCalculated(), secondOrthodromeVertex.getLatSide()) +
                     "  ," + ddToDmString("long", secondOrthodromeVertex.getLongCalculated(), secondOrthodromeVertex.getLongSide()) + "  )" +
-                    "\n\n";
+                    "\n";
         }
     }
 
