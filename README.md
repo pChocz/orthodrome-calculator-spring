@@ -20,8 +20,8 @@ use working JavaFX application from the link mentioned above.
 - [x] Initialize core and web modules
 - [x] Create basic HTML template for the home page
 - [x] Link the project with the GitHub repository
-- [ ] Implement and align logic code from the previous JavaFX project
-- [ ] Implement Thymeleaf template corresponding to HTML template
+- [x] Implement and align logic code from the previous JavaFX project
+- [x] Implement Thymeleaf template corresponding to HTML template
 - [ ] Implement decent internationalization properties (`EN` and `PL`)
 - [ ] Link logic code to the Thymeleaf template
 - [ ] Set up automatic tests and confirm that application is working
