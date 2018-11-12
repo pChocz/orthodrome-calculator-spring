@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--suppress XmlDuplicatedId -->
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <body>
-<form name="form">
+<form id="form" name="form">
 
     <div class="textAreaColumn" style="margin-left: 30px; margin-top: 30px;">
 
@@ -31,31 +31,31 @@
                     </tr>
                     <tr>
                         <td style="vertical-align:middle">A</td>
-                        <td><input type="text" name="a-lat-degree" size="4"> °
-                            <input type="text" name="a-lat-minute" size="5"> '
-                            <input type="text" name="a-lat-side" value="N" size="2" readonly="readonly"
-                                   style="text-align:center">
+                        <td><input type="text" th:field="*{aLatDegree}" name="aLatDegree" size="4"> °
+                            <input type="text" th:field="*{aLatMinute}" name="aLatMinute" size="5"> '
+                            <input type="text" th:field="*{aLatSide}" name="aLatSide" value="N" size="2"
+                                   style="text-align:center"> <!--readonly="readonly"-->
                             <input type="button" class="btn btn-default btn-xs custom_page" value="N/S">
                             <br>
-                            <input type="text" name="a-long-degree" size="4"> °
-                            <input type="text" name="a-long-minute" size="5"> '
-                            <input type="text" name="a-long-side" value="E" size="2" readonly="readonly"
-                                   style="text-align:center">
+                            <input type="text" th:field="*{aLongDegree}" name="aLongDegree" size="4"> °
+                            <input type="text" th:field="*{aLongMinute}" name="aLongMinute" size="5"> '
+                            <input type="text" th:field="*{aLongSide}" name="aLongSide" value="E" size="2"
+                                   style="text-align:center"> <!--readonly="readonly"-->
                             <input type="button" class="btn btn-default btn-xs custom_page" value="E/W">
                         </td>
                     </tr>
                     <tr>
                         <td style="vertical-align:middle">B</td>
-                        <td><input type="text" name="b-lat-degree" size="4"> °
-                            <input type="text" name="b-lat-minute" size="5"> '
-                            <input type="text" name="b-lat-side" value="N" size="2" readonly="readonly"
-                                   style="text-align:center">
+                        <td><input type="text" th:field="*{bLatDegree}" name="bLatDegree" size="4"> °
+                            <input type="text" th:field="*{bLatMinute}" name="bLatMinute" size="5"> '
+                            <input type="text" th:field="*{bLatSide}" name="bLatSide" value="N" size="2"
+                                   style="text-align:center"> <!--readonly="readonly"-->
                             <input type="button" class="btn btn-default btn-xs custom_page" value="N/S">
                             <br>
-                            <input type="text" name="b-long-degree" size="4"> °
-                            <input type="text" name="b-long-minute" size="5"> '
-                            <input type="text" name="b-long-side" value="E" size="2" readonly="readonly"
-                                   style="text-align:center">
+                            <input type="text" th:field="*{bLongDegree}" name="bLongDegree" size="4"> °
+                            <input type="text" th:field="*{bLongMinute}" name="bLongMinute" size="5"> '
+                            <input type="text" th:field="*{bLongSide}" name="bLongSide" value="E" size="2"
+                                   style="text-align:center"> <!--readonly="readonly"-->
                             <input type="button" class="btn btn-default btn-xs custom_page" value="E/W">
                         </td>
                     </tr>
@@ -63,18 +63,16 @@
             </div>
 
             <div class="btn-group margin">
-                <button type="button" class="btn btn-default custom grey_2" id="clear-info-button">
+                <input type="" class="btn btn-default custom grey_2" id="clear-info-button">
                     Clear/Info
-                </button>
-                <button type="button" class="btn btn-default custom grey_2" id="calculate-button">
-                    Calculate
-                </button>
+                </input>
+                <input type="submit" class="btn btn-default custom grey_2" id="calculate-button" value="Calculate">
             </div>
 
 
             <div class="cases-label" id="general-cases">General Cases</div>
             <div class="btn-group">
-                <button type="button" class="btn btn-default custom grey_1 examples">
+                <button type="button" class="btn btn-default custom grey_1 examples" id="general-example-01">
                     A(10°N;050°E)<br>B(20°N;170°E)
                 </button>
                 <button type="button" class="btn btn-default custom grey_1 examples">
@@ -134,14 +132,14 @@
 
 
         <div class="well custom_well_2">
-            <textarea name="primary-result" disabled>  </textarea>
+            <textarea name="primary-result" th:field="*{primaryResultMessage}" disabled>  </textarea>
             <div style="margin-top: 2px;">Piotr Choczyński (<a href=mailto:piotr@choczynski.pl
                                                                title="Orthodrome Calculator question">piotr@choczynski.pl</a>)
                 2018
             </div>
         </div>
         <div class="well custom_well_2">
-            <textarea name="secondary-result" disabled>  </textarea>
+            <textarea name="secondary-result" th:field="*{secondaryResultMessage}" disabled>  </textarea>
             <div style="margin-top: 2px;" id="title">Orthodrome Calculator</div>
         </div>
     </div>

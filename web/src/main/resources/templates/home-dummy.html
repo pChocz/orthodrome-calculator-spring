@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<!--suppress XmlDuplicatedId -->
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/home-style.css">
+    <TITLE id="title">Orthodrome Calculator</TITLE>
+    <META name="keywords" id="meta-keywords">
+    <META name="description" id="meta-description">
+</head>
+
+<!--  BOOTSTRAP  -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<body>
+<form id="form" name="form">
+
+    <table>
+        <tr>
+            <td><input type="text" th:field="*{firstValue}" name="firstValue" size="4">
+                <input type="text" th:field="*{secondValue}" name="secondValue" size="5">
+            </td>
+        </tr>
+    </table>
+
+
+    <input type="submit" id="calculate-button" value="Calculate">
+
+
+    <textarea name="primary-result" th:field="*{stringResult}" disabled> </textarea>
+
+</form>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-package chocz.pj.thymeleaf;
+package chocz.pj.util.thymeleaf;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

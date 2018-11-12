@@ -44,7 +44,7 @@ public class AllResults {
         this.setLoxodrome(new Loxodrome(aPoint, bPoint, getOrthodrome(), getCaseType()));
     }
 
-    protected Case verifySpecialCases(Point aPoint, Point bPoint) {
+    static public Case verifySpecialCases(Point aPoint, Point bPoint) {
         double difLambda = Math.abs(aPoint.getLambda() - bPoint.getLambda());
         double sumPhi = aPoint.getPhi() + bPoint.getPhi();
 
